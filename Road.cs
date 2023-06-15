@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,10 +38,10 @@ namespace ConsoleMatkonet15June23Solution
         }
 
         public int YoungAccidents()
-        {
+        {   // יש לספור תאונות של צעירים שהן גם קשות
             int count = 0;
             for (int i = 0; i < current; i++)
-                if (arr[i].GetIsYoungDriver())
+                if (arr[i].GetIsYoungDriver() && arr[i].GetAccidentType() == 3)
                     count++;
 
             return count;
