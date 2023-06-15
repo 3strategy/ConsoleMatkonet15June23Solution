@@ -25,7 +25,15 @@ namespace ConsoleMatkonet15June23Solution
         public Car LowCar()
         {
             int lowInd = 0;
-            for (int i = 0; i < cars.Length; i++)
+            int i;
+            for (i = 0; i < cars.Length; i++) 
+                if (cars[i] is not null) // find the first non-null index
+                {                        // is not null is equivalent to != null
+                    lowInd = i++;
+                    break;
+                }
+
+            for ( ; i < cars.Length; i++)
                 if (cars[i] != null && cars[i].GetKm() <= cars[lowInd].GetKm())
                     lowInd = i;
 
