@@ -4,6 +4,7 @@
     {
         public static void Main(string[] args)
         {
+            Main3ListFriends2();
         }
 
         // Q1
@@ -17,7 +18,7 @@
         // Q2 טבלת מעקב תחזיר 3
         // Q2 סעיף ג טבלת מעקב 2, הזימון יחזיר 2 
         // מטרת הפעולה לחשב את הפרש כמות הספרות בין שני המספרים
-
+        // מטרת הפעולה השניה למצוא בקטע שהוגדר מתוך המערך את הפרש כמות הספרות הגדול ביות בין זוג עוקבים
 
         //Q3 מספרים ידידים סכום מחלקים Friends
         public static int CalcDivisorsSum(int n) //א
@@ -48,6 +49,33 @@
                 }
         }
 
+        //Q3 פתרון נוסף
+        public static void Main3ListFriends2() //print 10 friend
+        {
+            int counter = 0;
+            int[] nums = new int[10];
+            int numsIndex = 0;
+            int num = 220;
+            while (counter != 10)
+            {
+                int num2 = CalcDivisorsSum(num);
+                if (CalcDivisorsSum(num2) == num && num != num2)
+                {
+                    bool isUsed = false;
+                    for (int i = 0; i < 10; i++)
+                        if (nums[i] == num)
+                            isUsed = true;
+                    if (!isUsed)
+                    {
+                        nums[numsIndex] = num2; //crucial to save num2 and not num
+                        numsIndex++;
+                        counter++;
+                        Console.WriteLine($"{counter}) {num} and {num2} are mates");
+                    }
+                }
+                num++;
+            }
+        }
         //Q4 סעיף ג פעולה חיצונית
         // Road.cs כל השאר נמצא בקובץ 
         public static void MostDangerousRoad(Road[] roads)
@@ -57,6 +85,15 @@
                 if (rd.YoungAccidents() >= MaxRoad.YoungAccidents())
                     MaxRoad = rd;
             Console.WriteLine(MaxRoad.GetRoadNum());
+        }
+        //Q4 פתרון נוסף
+        public static void MostDangerousRoad2(Road[] roads)
+        {
+            int result = 0;
+            for (int i = 0; i < roads.Length; i++)
+                if (roads[i].YoungAccidents() >= roads[result].YoungAccidents())
+                    result = i;
+            Console.WriteLine(roads[result].GetRoadNum());
         }
 
         //Q6 סעףיף א IsBalanced

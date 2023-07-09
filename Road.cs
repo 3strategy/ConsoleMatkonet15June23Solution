@@ -40,7 +40,9 @@ namespace ConsoleMatkonet15June23Solution
         public int YoungAccidents()
         {   // יש לספור תאונות של צעירים שהן גם קשות
             int count = 0;
-            for (int i = 0; i < current; i++)
+            for (int i = 0; i < current; i++) // חשוב. זה מערך מלא באופן רציף שסופו ריק current העניין הזה עם
+                                              // current לכן ממשיכים רק עד 
+                                              // שמציין את המקום הריק הראשון במערך
                 if (arr[i].GetIsYoungDriver() && arr[i].GetAccidentType() == 3)
                     count++;
 
